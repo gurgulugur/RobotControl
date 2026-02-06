@@ -1,0 +1,227 @@
+:root {
+    --bg-color: #050a0f;
+    --primary-color: #00d2ff;
+    --secondary-color: #3a7bd5;
+    --accent-color: #00f2fe;
+    --text-color: #e0f2f1;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --neon-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(58, 123, 213, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 100%, rgba(0, 242, 254, 0.1) 0%, transparent 50%);
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+header {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.status-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #ff4b2b;
+    /* Default disconnected color */
+    transition: color 0.3s ease;
+}
+
+.status-indicator.connected {
+    color: #00c853;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.btn-connect {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-connect:active {
+    transform: scale(0.95);
+}
+
+.btn-connect.connected {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+}
+
+.control-pad {
+    flex-grow: 1;
+    display: grid;
+    grid-template-areas:
+        ". up ."
+        "left center right"
+        ". down .";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    padding: 1rem;
+    position: relative;
+}
+
+/* Center circle for deco */
+.control-pad::after {
+    content: '';
+    grid-area: center;
+    width: 80px;
+    height: 80px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.direction-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 1;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.direction-btn i {
+    pointer-events: none;
+}
+
+.direction-btn:active,
+.direction-btn.active {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    box-shadow: var(--neon-shadow);
+    transform: scale(0.9);
+}
+
+.btn-up {
+    grid-area: up;
+}
+
+.btn-down {
+    grid-area: down;
+}
+
+.btn-left {
+    grid-area: left;
+}
+
+.btn-right {
+    grid-area: right;
+}
+
+.info-footer {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.btn-connect i {
+    font-size: 1.2rem;
+}
+
+/* Add Bluetooth Icon styles */
+.bt-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}

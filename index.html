@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ESP32 Robot Controller</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#050a0f">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Nova Controller</h1>
+            <p style="font-size: 0.8rem; opacity: 0.6;">ESP32 BT Interface</p>
+        </header>
+
+        <section class="status-panel">
+            <div id="status" class="status-indicator">
+                <div class="status-dot"></div>
+                <span id="status-text">DISCONNECTED</span>
+            </div>
+            <button id="connect-btn" class="btn-connect">
+                <i data-lucide="bluetooth"></i>
+                <span id="connect-btn-text">SCAN DEVICES</span>
+            </button>
+        </section>
+
+        <section class="control-pad">
+            <button id="btn-up" class="direction-btn btn-up" touch-action="none">
+                <i data-lucide="chevron-up"></i>
+            </button>
+            <button id="btn-left" class="direction-btn btn-left" touch-action="none">
+                <i data-lucide="chevron-left"></i>
+            </button>
+            <button id="btn-right" class="direction-btn btn-right" touch-action="none">
+                <i data-lucide="chevron-right"></i>
+            </button>
+            <button id="btn-down" class="direction-btn btn-down" touch-action="none">
+                <i data-lucide="chevron-down"></i>
+            </button>
+        </section>
+
+        <footer class="info-footer">
+            <p>Ensure ESP32 is in pairing mode</p>
+            <p id="device-info" style="margin-top: 5px;"></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
